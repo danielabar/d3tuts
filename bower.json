@@ -1,0 +1,11 @@
+{
+  "name": "d3tuts",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "modernizr": "~2.6.2",
+    "jquery": "~1.10.2",
+    "d3": "~3.4.3"
+  },
+  "devDependencies": {}
+}

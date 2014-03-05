@@ -99,3 +99,8 @@ body {
   stroke: #2711E6;
   shape-rendering: crispEdges;
 }
+
+/* SVG elements can be styled via CSS and CSS3 */
+/*circle:hover {
+  fill: lightgreen;
+}*/

@@ -71,7 +71,8 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
       d: line,
       fill: 'none',
       stroke: '#78B446',
-      'stroke-width': 4
+      'stroke-width': 4,
+      class: 'mypath'
     });
 
   var yearAxis = d3.svg.axis().scale(yearScale)

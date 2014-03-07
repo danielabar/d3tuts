@@ -27,16 +27,6 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
     .domain([0, d3.max(data, function(d) { return d.number; })])
     .range([50, window.innerHeight - 50]);
 
-  var yearAxis = d3.svg.axis().scale(yearScale)
-    .tickSize(100 - window.innerHeight) // reverse direction that ticks are produced in
-    .orient('bottom');
-
-  svg.append('g')
-    .attr({
-      'class': 'axis',
-      'transform': 'translate(' + [0, window.innerHeight - 50] + ')',
-    }).call(yearAxis);
-
   // create a horizontal line across top of the chart
   svg.append('line')
     .attr({
@@ -46,6 +36,25 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
       y2: 50,
       fill: 'none',
       stroke: '#474747'
+    });
+
+  // Create an area function:
+  // x is horizontal axis
+  // y0 is number that goes along bottom of the graph, doesn't have to be a function
+  // y1 is veritcal area for TOP of block
+  var area = d3.svg.area()
+    .x(function(d) { return yearScale(d.year); })
+    .y0(window.innerHeight - 50)
+    .y1(function(d) { return window.innerHeight - numberScale(d.number); });
+
+  // Now use area function above to create a shape
+  // put data in array so it's treated as single entity
+  svg.append('path')
+    .data([data])
+    .attr({
+      d: area,
+      fill: '#C3E4A8',
+      stroke: 'none'
     });
 
   // define a line with functions specifying how to calculate each x/y co-ordinate
@@ -64,6 +73,16 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
       stroke: '#78B446',
       'stroke-width': 4
     });
+
+  var yearAxis = d3.svg.axis().scale(yearScale)
+    .tickSize(100 - window.innerHeight) // reverse direction that ticks are produced in
+    .orient('bottom');
+
+  svg.append('g')
+    .attr({
+      'class': 'axis',
+      'transform': 'translate(' + [0, window.innerHeight - 50] + ')',
+    }).call(yearAxis);
 
   svg.selectAll('circle')
     .data(data)

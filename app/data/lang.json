@@ -1,0 +1,105 @@
+{
+  "name": "West Germanic Languages",
+  "children":
+    [
+      {
+        "name": "Ingvaeonic",
+        "children":
+          [
+            {
+              "name": "Old English",
+              "children":
+                [
+                  {
+                    "name": "Middle English",
+                    "children":
+                      [
+                        {
+                          "name": "English"
+                        }
+                      ]
+                  }
+                ]
+            },
+            {
+              "name": "Old Frisian",
+              "children":
+                [
+                  {
+                    "name": "Frisian"
+                  }
+                ]
+            },
+            {
+              "name": "Old Saxon",
+              "children":
+                [
+                  {
+                    "name": "Middle Low German",
+                    "children":
+                      [
+                        {
+                          "name": "Low German"
+                        }
+                      ]
+                  }
+                ]
+            }
+          ]
+    },
+    {
+      "name": "Istvaeonic",
+      "children":
+        [
+          {
+            "name": "Old Dutch",
+            "children":
+              [
+                {
+                  "name": "Middle Dutch",
+                  "children":
+                    [
+                      {
+                        "name": "Dutch"
+                      },
+                      {
+                        "name": "Afrikaas"
+                      }
+                    ]
+                }
+              ]
+          }
+        ]
+    },
+    {
+      "name": "Erminonic",
+      "children":
+        [
+          {
+            "name": "Old High German",
+            "children":
+              [
+                {
+                  "name": "Middle High German",
+                  "children":
+                    [
+                      {
+                        "name": "German"
+                      }
+                    ]
+                },
+                {
+                  "name": "Old Yiddish",
+                  "children":
+                    [
+                      {
+                        "name": "Yiddish"
+                      }
+                    ]
+                }
+              ]
+          }
+        ]
+    }
+    ]
+}

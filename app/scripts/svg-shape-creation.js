@@ -26,7 +26,44 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
     .domain([0, d3.max(data, function(d) { return d.number; })])
     .range([50, window.innerHeight - 50]);
 
-  // not working for me, getting NaN from yearScale and numberScale
+  var yearAxis = d3.svg.axis().scale(yearScale)
+    .tickSize(100 - window.innerHeight) // reverse direction that ticks are produced in
+    .orient('bottom');
+
+  svg.append('g')
+    .attr({
+      'class': 'axis',
+      'transform': 'translate(' + [0, window.innerHeight - 50] + ')',
+    }).call(yearAxis);
+
+  // create a horizontal line across top of the chart
+  svg.append('line')
+    .attr({
+      x1: 50,
+      y1: 50,
+      x2: window.innerWidth - 50,
+      y2: 50,
+      fill: 'none',
+      stroke: '#474747'
+    });
+
+  // define a line with functions specifying how to calculate each x/y co-ordinate
+  // notice the x/y functions are the same as cx/cy functions used for circles
+  var line = d3.svg.line()
+    .x(function(d) { return yearScale(d.year); })
+    .y(function(d) { return window.innerHeight - numberScale(d.number); });
+
+  // Now construct a path element using line definition above
+  // data is put in array so that it will be treated as a single data element
+  svg.append('path')
+    .data([data])
+    .attr({
+      d: line,
+      fill: 'none',
+      stroke: '#78B446',
+      'stroke-width': 4
+    });
+
   svg.selectAll('circle')
     .data(data)
     .enter()

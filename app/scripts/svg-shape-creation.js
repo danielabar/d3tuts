@@ -85,6 +85,7 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
       'transform': 'translate(' + [0, window.innerHeight - 50] + ')',
     }).call(yearAxis);
 
+  // render the circles
   svg.selectAll('circle')
     .data(data)
     .enter()

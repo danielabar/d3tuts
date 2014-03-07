@@ -13,6 +13,8 @@ var svg = d3.select('div.container').append('svg')
 // size takes an array
 //  first element is degrees, where 360 would be a full radial tree
 //  second element is radius for circle
+// tree layout converts data that doesn't have explicit position to
+//  values that can be laid out relative to eachother (eg: parent->child)
 var tree = d3.layout.tree().size([60, radius]);
 
 // layouts often used in conjunction with shape generator

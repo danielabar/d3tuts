@@ -16,10 +16,11 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
   console.dir(data);
 
   // create a year scale (i.e. x coordinate scale)
-  // need d3's time scale feature
-  // going to create dots connected by lines
+  // need d3's time scale feature - takes JavaScript Date objects instead of numbers
+  // going to create dots connected by lines, i.e. a line graph
   var yearScale = d3.time.scale()
-    .domain(d3.extent(data, function(d) {return d.year;} )) // extent returns array with min and max from input
+    // extent returns array with min and max from input
+    .domain(d3.extent(data, function(d) {return d.year;} ))
     .range([50, window.innerWidth - 50]);
 
   var numberScale = d3.scale.linear()
@@ -72,8 +73,8 @@ d3.csv('/data/tuts.csv', function(d) {d.year = parse(d.year); return d;}, functi
       cx: function(d) { return yearScale(d.year); },
       cy: function(d) { return window.innerHeight - numberScale(d.number); },
       r: 4,
-      fill: '#fff', // white because we're going to use a stroke
-      stroke: '#788446',
-      'stroke-width': 4
+      fill: '#fff', // fill is white because we're going to use a stroke
+      stroke: '#788446', // nice shade of green
+      'stroke-width': 4 // property stroke-width must be in quotes because it has a hyphen
     });
 });

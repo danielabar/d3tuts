@@ -15,13 +15,13 @@ var barWidth = window.innerWidth / data.length;
 
 // experiment with color transition
 var rectInitialAttrs = {
-  width: barWidth,
-  height: window.innerHeight,
+  width: 0,
+  height: 0,
   y: 0,
   x: function(d, i) {
     return barWidth * i;
   },
-  fill: 'white'
+  fill: 'black'
 };
 
 var rectFinalAttrs = {

@@ -13,17 +13,54 @@ var color = d3.scale.category10();
 // We'll need the bar width in multiple places
 var barWidth = window.innerWidth / data.length;
 
-// 10 colors across 20 bars, each color will be repeated twice
-svg.selectAll('rect')
+// experiment with color transition
+var rectInitialAttrs = {
+  width: barWidth,
+  height: window.innerHeight,
+  y: 0,
+  x: function(d, i) {
+    return barWidth * i;
+  },
+  fill: 'white'
+};
+
+var rectFinalAttrs = {
+  width: barWidth,
+  height: window.innerHeight,
+  y: 0,
+  x: function(d, i) {
+    return barWidth * i;
+  },
+  fill: color
+};
+
+// Transition rects from white to 10color scale
+var colorRects = svg.selectAll('rect')
   .data(data)
   .enter()
   .append('rect')
-  .attr({
-    width: barWidth,
-    height: window.innerHeight,
-    y: 0, // because we don't want bars moving down at all
-    x: function(d, i) {
-      return barWidth * i;
-    },
-    fill: color
-  });
+  .attr(rectInitialAttrs);
+
+colorRects.transition()
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .duration(1000)
+  .ease('linear')
+  .attr(rectFinalAttrs);
+
+
+// 10 colors across 20 bars, each color will be repeated twice
+// svg.selectAll('rect')
+//   .data(data)
+//   .enter()
+//   .append('rect')
+//   .attr({
+//     width: barWidth,
+//     height: window.innerHeight,
+//     y: 0, // because we don't want bars moving down at all
+//     x: function(d, i) {
+//       return barWidth * i;
+//     },
+//     fill: color
+//   });

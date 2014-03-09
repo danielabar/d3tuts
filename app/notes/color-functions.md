@@ -42,4 +42,17 @@ a.darker(0.1);
 a.toString(); // "#3664db"
 
 // d3 has built in color schemes
+
+// category10 is a group of 10/ colors that D3 thinks go well together
+var color10 = d3.scale.category10();
+
+// category20 is like category10 but dark/light version of each color
+var color20 = d3.scale.category20();
+
+// category20b is a variation on category20, 4 versions of each color from dark to light
+var color20b = d3.scale.category20b();
+
+// yet another variation
+var color20c = d3.scale.category20b();
+
 ```

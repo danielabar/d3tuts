@@ -40,3 +40,5 @@ To work with any of the exercises, follow these steps:
 [Interactive Scatter Plot with Transition](http://codepen.io/danielabar/full/mnGzD)
 
 [Animated Line Graph with Shape Creation](http://codepen.io/danielabar/full/bIHzm)
+
+[Color Scale with Cubic Ease Transition](http://codepen.io/danielabar/full/yunig)

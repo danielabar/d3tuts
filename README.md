@@ -45,3 +45,14 @@ To work with any of the exercises, follow these steps:
 [Animated Line Graph with Shape Creation](http://codepen.io/danielabar/full/bIHzm)
 
 [Color Scale with Cubic Ease Transition](http://codepen.io/danielabar/full/yunig)
+
+## Further Resources
+
+[API Reference](https://github.com/mbostock/d3/wiki/API-Reference)
+[Tutorials](https://github.com/mbostock/d3/wiki/Tutorials)
+[Online Book - Interactive Data Visualization for the Web](http://chimera.labs.oreilly.com/books/1230000000345)
+[youtube enjalot](http://www.youtube.com/user/enjalot)
+
+### Charting Libraries built on top of D3
+[dimplejs](http://dimplejs.org/)
+[nvd3](http://nvd3.org/)

@@ -33,7 +33,7 @@ To work with any of the exercises, follow these steps:
 | Layouts                        | [layout-tree.js](app/scripts/layout-tree.js), [layout-pie.js](app/scripts/layout-pie.js) |
 | Array Functions                | [array-functions.txt](app/notes/array-functions.txt)                   |
 | [D3's Color Functions](/app/notes/color-functions.md) | [color-functions.js](app/scripts/color-functions.js) |
-| Formatting Numbers             | TBD                                                                    |
+| Formatting Numbers             | [formatting-numbers.md](app/notes/formatting-numbers.md)               |
 
 ## Demo's
 

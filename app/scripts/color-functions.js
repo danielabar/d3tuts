@@ -46,7 +46,7 @@ colorRects.transition()
     return i * 100;
   })
   .duration(1000)
-  .ease('linear')
+  .ease('cubic')
   .attr(rectFinalAttrs);
 
 

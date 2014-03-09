@@ -9,9 +9,9 @@ To work with any of the exercises, follow these steps:
 1. Clone this repo
 
 1. Open terminal window and ```cd``` to project root, then run:
-  1. ```npm install```
-  1. ```bower install```
-  1. ```grunt serve```
+  * ```npm install```
+  * ```bower install```
+  * ```grunt serve```
 
 1. Edit [index.html](app/index.html) to reference the desired JavaScript file just before the closing ```</body>``` tag.
 
@@ -36,8 +36,6 @@ To work with any of the exercises, follow these steps:
 | Formatting Numbers             | TBD                                                                    |
 
 ## Demo's
-
-Also see some codepen's I created demonstrating and combining these concepts.
 
 [Interactive Scatter Plot with Transition](http://codepen.io/danielabar/full/mnGzD)
 

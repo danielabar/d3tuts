@@ -1,33 +1,32 @@
 # Tuts Plus: Beautiful Data with D3
 
-## Working with Elements
-```
-d3 object is similar to jquery, glorified dom element
-d3.select("body");
-d3.selectAll("body");
+Course notes and exercises from [Tuts+ Premium](https://tutsplus.com) course [Beautiful Data with D3](https://tutspus.com/course/beautiful-data-with-d3)
 
-var body = d3.select("body"); // now all d3 methods are available on body
+## Contents
 
-body.append("h1").text("Hello D3");
+To see these in action, link to the JavaScript file just before the closing ```</body>``` tag in (index.html)[app/index.html]
 
-var h1 = body.select("h1");
+| Section                        | Resource(s)                                                   |
+| ------------------------------ | ------------------------------------------------------------- |
+| Working with Elements          | [working-with-elements.md](notes/working-with-elements.md)    |
+| SVG Basics                     | [basicData.js](notes/basicData.js)                            |
+| Bringing in the Data
+| Updating Pattern
+| Scales, part 1
+| Scales, part 2
+| Axes
+| Interacting with Events
+| Transitions
+| Loading External Resources
+| SVG Shape Creation Functions
+| Layouts
+| Array Functions
+| D3's Color Functions
 
-// pass key-value
-h1.attr({"id", "heading"});
+## Demo's
 
-// pass object
-h1.attr({ id: "something", "class": "my-class"})
+Also see some codepen's I created demonstrating and combining these concepts.
 
-h1.style({ "font-family": "sans-serif", color: "blue"})
+[Interactive Scatter Plot with Transition](http://codepen.io/danielabar/pen/mnGzD)
 
-// set or remove classes
-h1.classed("another-class", true); // add class
-h1.classed("my-class", false); // remove class
-
-h1.html("<span> Hello </span> D3!");
-h1.text("<span>Hello</span");
-
-body.insert("p", "script");
-
-h1.remove(); // remove element entirely from dom
-```
+[Animated Line Graph with Shape Creation](http://codepen.io/danielabar/pen/bIHzm)

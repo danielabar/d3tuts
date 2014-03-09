@@ -55,5 +55,5 @@ To work with any of the exercises, follow these steps:
 
 ### Charting Libraries built on top of D3
 
-[dimplejs](http://dimplejs.org/)
-[nvd3](http://nvd3.org/)
+* [dimplejs](http://dimplejs.org/)
+* [nvd3](http://nvd3.org/)

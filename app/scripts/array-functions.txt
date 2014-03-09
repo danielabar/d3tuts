@@ -1,0 +1,126 @@
+// JavaScript sort is alphabetic
+var a = [1, 12, 7, 82, 34, 18, 65, 8, 56, 32, 40, 78, 9, 21, 90, 20, 4];
+a.sort();
+// [1, 12, 18, 20, 21, 32, 34, 4, 40, 56, 65, 7, 78, 8, 82, 9, 90]
+
+// D3 has numeric sort
+a.sort(d3.ascending);
+// [1, 4, 7, 8, 9, 12, 18, 20, 21, 32, 34, 40, 56, 65, 78, 82, 90]
+a.sort(d3.descending);
+// [90, 82, 78, 65, 56, 40, 34, 32, 21, 20, 18, 12, 9, 8, 7, 4, 1]
+
+// NOTE: JavaScript sort not only returns sorted array, but MODIFIES the original array
+
+// Other D3 array functions:
+d3.min(a);    // 1
+d3.max(a);    // 90
+d3.extent(a); // [1, 90]
+d3.sum(a);    // Sum of elements in array: 577
+d3.mean(a);   // Avg of elements in array: 33.94117647058824
+d3.median(a); // Middle value in array: 21
+
+// NOTE: All of above methods can take accessor function as second argument,
+//  This is useful when you have array of objects, and want to perform
+//  min/max/sum etc on one of the key properties of the objects
+
+// Statistical functions -> Depend on array being sorted???
+d3.quantile(a, 0.5);    // Avg value at a half point: 21
+d3.quantile(a, 0.25);   // Avg value at quarter quantile: 56, given that array is sorted descending
+d3.quantile(a, 0.25);   // Avg value at quarter quantile: 9, given that array is sorted ascending
+d3.bisect(a, 5);        // 2: Returns zero-based insertion point where second arg would go in array to keep it sorted
+d3.bisectRight(a, 5);   // Same behaviour as bisect
+// If provide arg that is already in array, bisectRight will return insertion point to the "right" of that element
+// bisectLeft will return insertion point to the left if item already in array
+d3.shuffle(a);          // returns shuffled array AND modifies array
+
+// Object Methods
+var o = { name: 'John Doe', age: 30, Occupation: 'data analyst' };
+
+// Return array of object keys
+d3.keys(o);   // ["name", "age", "Occupation"]
+
+// Return array of object values
+d3.values(o); // ["John Doe", 30, "data analyst"]
+
+// Return array of key/value pairs
+JSON.stringify(d3.entries(o));  // "[{"key":"name","value":"John Doe"},{"key":"age","value":30},{"key":"Occupation","value":"data analyst"}]"
+
+// Map is a more strict version of an object
+// Convert object to map:
+var q = d3.map(o);  // d3_Map {name: "John Doe", age: 30, Occupation: "data analyst"}
+q.has('name');      // true
+q.get('name');      // "John Doe"
+q.set('age', 31);   // 31
+q;                  // d3_Map {name: "John Doe", age: 31, Occupation: "data analyst"}
+// remove a key from map
+q.remove('age');    // true
+q.has('age');       // false
+
+// Map also has some same methods as object
+q.keys();           // ["name", "Occupation"]
+q.values();         // ["John Doe", "data analyst"]
+JSON.stringify(q.entries());  // "[{"key":"name","value":"John Doe"},{"key":"Occupation","value":"data analyst"}]"
+
+q.forEach(function (d) {
+  console.log(d); // prints out each key: name, Occupation
+});
+
+// If want to iterate over each key AND value
+q.forEach(function(k, v) {
+  console.log([k, v]);
+});
+// Outputs:
+/*
+  ["name", "John Doe"]
+  ["Occupation", "data analyst"]
+*/
+typeof q;   // "object"
+
+// NOTE: EcmaScript 6 has native maps as well, which would be similar to d3 maps
+//  As maps are to objects, sets are to arrays
+
+var b = [1, 12, 7, 82, 34, 18, 65, 8, 56, 32, 40, 78, 9, 21, 90, 20, 4];
+var s = d3.set(b);
+JSON.stringify(s);
+// "{"\u00001":true,"\u000012":true,"\u00007":true,"\u000082":true,"\u000034":true,"\u000018":true,"\u000065":true,"\u00008":true,"\u000056":true,"\u000032":true,"\u000040":true,"\u000078":true,"\u00009":true,"\u000021":true,"\u000090":true,"\u000020":true,"\u00004":true}"
+
+// Set is a stricter version of array
+s.has(1);   // true
+s.add(2);   // 2
+s.remove(1) // true
+
+// NOTE: Set can never have multiple items with the same value!
+
+// Like with maps, sets also have forEach to iterate over each element
+s.forEach(function(d) {console.log(d);});
+
+// Other functions to work with multiple arrays:
+
+// Merge takes array of arrays
+d3.merge([b, ['a', 'b', 'c']]); // returns new array with contents of first and second args
+
+// Creating arrays
+
+// from 0 to end-1 (10)
+d3.range(10);     // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// from start (5) to end-1 (10)
+d3.range(5, 10);  // [5, 6, 7, 8, 9]
+
+// from start (5) to end-1 (20), step (3) at a time
+d3.range(5, 20, 3);
+
+// first arg is array of values, 2nd arg specifies indicies
+d3.permute(['a', 'b', 'c'], [2, 0, 1, 0, 1]);   // ["c", "a", "b", "a", "b"]
+
+// use zip to create a matrix of multiple arrays into one
+var m = d3.zip([0, 1, 2], [3, 4, 5], [6, 7, 8]);
+JSON.stringify(m);    // "[[0,3,6],[1,4,7],[2,5,8]]"
+
+// can do a lot of advanced math with matricies
+var t = d3.transpose(m);  // turn matrix on its side
+JSON.stringify(t);     // "[[0,1,2],[3,4,5],[6,7,8]]"
+
+// create pairs over each element in array
+var p = d3.pairs(b);  // NOTE that pairs overlap
+JSON.stringify(p);    // "[[1,12],[12,7],[7,82],[82,34],[34,18],[18,65],[65,8],[8,56],[56,32],[32,40],[40,78],[78,9],[9,21],[21,90],[90,20],[20,4]]"
